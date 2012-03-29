@@ -25,8 +25,15 @@ end
 
 def scan_card(result, rfid)
   if result['status'] == 'CHECKED_IN'
-    puts "Checked in!".green
-    puts result['account'].inspect
+    puts "Checked in!".green.bold
+    puts "Name: #{result['account']['name']}\n"
+    puts "Student Id: #{result['account']['student_id']}\n"
+    puts "Program: #{result['account']['program']}\n"
+    if result['account']['cse_id']
+      puts ("CSE ID: #{result['account']['cse_id']}").green.bold
+    else
+      puts "CSE ID: Not a CSE Student\n".red.bold
+    end
   
   elsif result['status'] == 'NOT_MEMBER'
     puts "Not Registered".red
