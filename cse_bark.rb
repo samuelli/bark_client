@@ -68,7 +68,7 @@ begin
     puts "Scan a card!".green
     rfid = Reader::scan
     Thread.new do
-      `afplay /System/Library/Sounds/Ping.aiff`
+      `aplay -q beep.wav`
     end
     puts "Loading...".yellow
     result = @event.check_in_with_rfid(rfid).body
